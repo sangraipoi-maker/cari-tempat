@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cari Tempat — Kafe &amp; Tempat Main Alam di Sekitarmu (Fondasi MVP)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Cari Tempat</h1>
+    <p class="subtitle">Kafe &amp; tempat main alam di sekitar titikmu — data OpenStreetMap, tanpa kunci API · Fondasi MVP Divisi Programming</p>
+  </div>
+  <div id="netstat" class="health">data: OpenStreetMap / Overpass API</div>
+</header>
+
+<section class="controls card">
+  <div class="grid-controls">
+    <label>Titik acuan (preset Yogyakarta)
+      <select id="sel-preset">
+        <option value="-7.7929,110.3658" selected>Malioboro</option>
+        <option value="-7.7831,110.3670">Tugu Yogyakarta</option>
+        <option value="-7.7714,110.3756">UGM</option>
+        <option value="-7.8119,110.3634">Alun-alun Kidul</option>
+        <option value="-7.6167,110.4250">Kaliurang</option>
+      </select>
+    </label>
+    <label>Latitude
+      <input type="number" id="in-lat" step="0.0001" value="-7.7929" />
+    </label>
+    <label>Longitude
+      <input type="number" id="in-lon" step="0.0001" value="110.3658" />
+    </label>
+    <label class="btnlabel">&nbsp;
+      <button type="button" id="btn-geo">Pakai lokasi saya</button>
+    </label>
+  </div>
+
+  <div class="grid-controls">
+    <label>Radius: <span id="radius-out">5 km</span>
+      <input type="range" id="in-radius" min="0.5" max="50" step="0.5" value="5" />
+      <span class="hint">Kafe enak di 1–5 km; tempat alam (pantai, air terjun) sering 10–30 km dari pusat kota.</span>
+    </label>
+    <label>Kategori
+      <span class="checks">
+        <label class="check"><input type="checkbox" id="ck-kafe" checked /> Kafe</label>
+        <label class="check"><input type="checkbox" id="ck-alam" checked /> Tempat main alam</label>
+      </span>
+    </label>
+    <label>Area duduk (kafe)
+      <select id="sel-seat">
+        <option value="semua" selected>Semua</option>
+        <option value="outdoor">Ada outdoor</option>
+        <option value="indoor">Ada indoor</option>
+      </select>
+    </label>
+    <label>Buka sampai minimal
+      <select id="sel-close">
+        <option value="" selected>Tanpa syarat</option>
+        <option value="1260">21.00</option>
+        <option value="1320">22.00</option>
+        <option value="1380">23.00</option>
+        <option value="1440">Tengah malam (00.00) atau lebih</option>
+        <option value="24">Hanya yang 24 jam</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="grid-controls">
+    <label class="check"><input type="checkbox" id="ck-unknown-seat" checked /> Sertakan kafe yang area duduknya belum diketahui datanya</label>
+    <label class="check"><input type="checkbox" id="ck-unknown-hours" checked /> Sertakan tempat yang jam bukanya belum diketahui datanya</label>
+    <label class="check"><input type="checkbox" id="ck-named" checked /> Hanya tempat yang bernama (khusus alam: banyak poligon hutan/taman tanpa nama di data mentah)</label>
+  </div>
+
+  <div class="statusline">
+    <button type="button" id="btn-search" class="primary">Cari tempat</button>
+    <span id="status">Pilih titik acuan lalu tekan Cari.</span>
+  </div>
+  <p id="notice" class="notice" hidden></p>
+</section>
+
+<main class="layout">
+  <div id="map" class="map card"></div>
+  <section>
+    <div id="summary" class="summary"></div>
+    <div id="list" class="list"></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Data © kontributor <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL), diambil langsung lewat Overpass API — gratis, tanpa kunci API.
+  <strong>Kejujuran data:</strong> tidak semua tempat di OSM punya tag lengkap — di uji nyata sekitar Malioboro hanya ±20% kafe yang mencatat jam buka dan ±11% yang mencatat area duduk outdoor.
+  Yang belum tercatat ditampilkan sebagai <em>“belum tersedia di data”</em>, bukan ditebak. Kesalahan/kekurangan data bisa diperbaiki siapa pun langsung di OpenStreetMap.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

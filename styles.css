@@ -1,0 +1,54 @@
+/* styles.css — Fondasi MVP Cari Tempat (Kirana, Frontend & UI)
+   Palet lembut/redup sama seperti Render Jurnal: krem + hijau sage. */
+:root {
+  --bg: #f4f1ea;
+  --card: #fbf9f4;
+  --ink: #33302a;
+  --muted: #7a7466;
+  --line: #ddd5c4;
+  --accent: #6b7f5e;
+  --accent-soft: #e6ebdf;
+  --warn-bg: #f7ecd2;
+  --warn-ink: #6d5a1f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto; max-width: 1180px; padding: 20px 18px 40px;
+  background: var(--bg); color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+.topbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+h1 { margin: 0; font-size: 1.7rem; letter-spacing: .2px; }
+.subtitle { margin: 4px 0 0; color: var(--muted); font-size: .92rem; }
+.health { font-family: ui-monospace, monospace; font-size: .78rem; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--card); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 16px; }
+.grid-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 14px; }
+label { display: flex; flex-direction: column; gap: 5px; font-size: .85rem; color: var(--muted); }
+select, input[type="number"] { padding: 8px; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--ink); font: inherit; }
+input[type="range"] { accent-color: var(--accent); }
+.hint { color: var(--muted); font-size: .8rem; }
+.checks { display: flex; gap: 16px; padding-top: 8px; }
+label.check { flex-direction: row; align-items: center; gap: 7px; font-size: .9rem; color: var(--ink); }
+button { padding: 8px 14px; border: 1px solid var(--accent); border-radius: 7px;
+  background: var(--accent-soft); color: var(--ink); font: inherit; font-size: .9rem; cursor: pointer; }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.statusline { margin-top: 14px; display: flex; align-items: center; gap: 12px; font-size: .92rem; flex-wrap: wrap; }
+.notice { background: var(--warn-bg); color: var(--warn-ink); border-radius: 7px; padding: 9px 12px; font-size: .9rem; }
+.layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+.map { height: 520px; margin-top: 0; padding: 0; overflow: hidden; }
+.summary { color: var(--muted); font-size: .9rem; margin: 4px 0 10px; }
+.list { display: flex; flex-direction: column; gap: 10px; }
+.place { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.place h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.place h3 .dist { color: var(--accent); font-size: .85rem; font-weight: normal; white-space: nowrap; }
+.place .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.badge { font-family: ui-monospace, monospace; font-size: .7rem; border: 1px solid var(--line);
+  border-radius: 999px; padding: 2px 8px; background: var(--accent-soft); color: var(--ink); }
+.badge.unknown { background: var(--warn-bg); color: var(--warn-ink); border-color: #e3d5a8; }
+.place p { margin: 4px 0; font-size: .9rem; line-height: 1.5; }
+.place .raw { font-family: ui-monospace, monospace; font-size: .72rem; color: var(--muted); }
+.place a { color: var(--accent); }
+.foot { margin-top: 24px; color: var(--muted); font-size: .85rem; line-height: 1.5; }
+.foot a { color: var(--accent); }

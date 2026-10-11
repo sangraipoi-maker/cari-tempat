@@ -1,0 +1,13 @@
+# Rahasia — JANGAN PERNAH masuk repo
+.env
+.env.*
+*.key
+*.pem
+credentials*
+*secret*
+# Dependensi & hasil build
+node_modules/
+dist/
+# OS & editor
+.DS_Store
+*.log
